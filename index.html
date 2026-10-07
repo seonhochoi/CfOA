@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: New Deal public-works poster. One navy hero with a rising sun, then a stacked platform, a to-scale gap chart, and a call script. */
+/* Layout: navy header with a rising sun, then the odds, a stacked platform, a to-scale bar graph, and a call script. */
 :root {
   --paper: #f2f4f7;
   --card: #ffffff;
@@ -18,7 +18,6 @@
   --rule: #d3dae4;
   --red: #b92b2b;
   --sun: #f2b134;
-  --wash: #fbefcf;
   --hero-bg: #14213d;
   --hero-fg: #f7f8fa;
   --hero-soft: #c6cfe0;
@@ -27,25 +26,8 @@
   --body: "Libre Franklin", "Franklin Gothic Book", "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
-    --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
-    --hero-bg: #0a1024; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
-  --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
-  --hero-bg: #0a1024; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
-  color-scheme: dark;
-}
 
 * { box-sizing: border-box; }
-html { color-scheme: light; }
-img { max-width: 100%; }
-[hidden] { display: none !important; }
 body {
   margin: 0;
   background: var(--paper);
@@ -56,7 +38,7 @@ body {
 }
 .wrap { max-width: 1100px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
 a { color: inherit; }
-a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
 
 h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
 h2 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; line-height: 0.98; text-transform: uppercase; letter-spacing: 0.005em; }
@@ -102,7 +84,6 @@ p { margin: 0; max-width: 65ch; }
   letter-spacing: -0.005em;
   max-width: 15ch;
 }
-.slogan em { font-style: normal; color: var(--sun); }
 .hero-lede { margin-top: 28px; font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--hero-soft); max-width: 52ch; }
 .hero-lede strong { color: var(--hero-fg); font-weight: 700; }
 .hero-lede + .hero-lede { margin-top: 16px; }
@@ -119,7 +100,6 @@ p { margin: 0; max-width: 65ch; }
   border: 2px solid var(--sun);
   color: var(--hero-bg);
   background: var(--sun);
-  cursor: pointer;
 }
 .btn.ghost { background: transparent; color: var(--hero-fg); border-color: var(--hero-soft); }
 .btn:hover { transform: translateY(-1px); }
@@ -133,15 +113,18 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .section-head .label { color: var(--red); }
 .section-head p { color: var(--ink-soft); }
 
+/* Odds */
+.odds { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.odds .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.12; max-width: 22ch; min-width: 0; }
+.odds .big span { color: var(--red); }
+.odds-text { display: grid; gap: 18px; min-width: 0; }
+
 /* Platform */
 .planks { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(18px, 2.4vw, 28px); max-width: 780px; }
-.plank { background: var(--card); border-top: 6px solid var(--ink); padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.plank { background: var(--card); border-top: 6px solid var(--ink); padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; min-width: 0; }
 .plank .label { color: var(--red); }
 .plank p { color: var(--ink-soft); font-size: 1rem; }
-.plank p strong { color: var(--ink); }
-.ask { background: var(--wash); padding: 16px 18px; display: grid; gap: 6px; }
-.ask .label { color: var(--ink); }
-.ask p { color: var(--ink); }
+.plank .ask { color: var(--ink); }
 
 /* Gap chart */
 .gap-chart { display: grid; gap: 26px; margin-top: 8px; }
@@ -152,18 +135,17 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .fill { height: 100%; background: var(--red); }
 .fill.tiny { width: calc(100% * 150 / 286000); min-width: 1px; }
 .gap-note { font-size: 0.9rem; color: var(--ink-soft); max-width: 70ch; }
-.gap-source { font-size: 0.8rem; color: var(--ink-soft); max-width: 90ch; margin-top: -12px; }
-.gap-source a { overflow-wrap: anywhere; }
-
-
 /* Act */
 .act { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
 .act-left { display: grid; gap: 18px; min-width: 0; }
 .phone { font-family: var(--display); font-size: clamp(2.2rem, 4.6vw, 3.4rem); font-weight: 900; line-height: 1; white-space: nowrap; user-select: all; }
-.phone-cap { font-size: 0.95rem; color: var(--ink-soft); }
 .script { background: var(--card); border: 2px solid var(--ink); padding: clamp(20px, 3vw, 28px); display: grid; gap: 16px; min-width: 0; }
-.script-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .script blockquote { margin: 0; font-family: var(--mono); font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Source lines (under the odds and the bar graph) */
+.source { font-size: 0.8rem; color: var(--ink-soft); max-width: 90ch; }
+.source a { overflow-wrap: anywhere; }
+.gap-chart .source { margin-top: -12px; }
 
 /* Footer */
 footer { background: var(--hero-bg); color: var(--hero-soft); }
@@ -172,7 +154,7 @@ footer .brand { color: var(--hero-fg); font-size: 1.1rem; }
 footer p { font-size: 0.85rem; max-width: 60ch; }
 
 @media (max-width: 760px) {
-  .act { grid-template-columns: minmax(0, 1fr); }
+  .odds, .act { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero::after { animation: none; }
@@ -189,6 +171,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
         Citizens for One America
       </div>
       <nav class="nav" aria-label="Sections">
+        <a href="#odds">The odds</a>
         <a href="#platform">Platform</a>
         <a href="#gap">The gap</a>
         <a href="#act">Take action</a>
@@ -209,6 +192,23 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
 <div class="bunting" aria-hidden="true"></div>
 
 <main>
+  <!-- The odds -->
+  <section class="block" id="odds">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">The odds</span>
+        <h2>Born at the bottom, few reach the top</h2>
+      </div>
+      <div class="odds">
+        <p class="big">A child born into America’s poorest fifth of families has a <span>7.5%</span> chance of reaching the richest fifth.</p>
+        <div class="odds-text">
+          <p>That’s lower than in Canada (13.5%) or Denmark (11.7%). In 2025, <strong>34.5 million Americans</strong> lived below the official poverty line. Talent is spread evenly across every zip code. Opportunity isn’t.</p>
+          <p>Poverty responds to policy. When Congress expanded the Child Tax Credit in 2021, child poverty fell to a record-low <strong>5.2%</strong>. When the expansion expired, it more than doubled, to <strong>12.4%</strong> in 2022. Choices made in Washington decide how many kids grow up poor.</p>
+          <p class="source">Sources: Raj Chetty, <a href="https://www.irp.wisc.edu/wp/wp-content/uploads/2020/06/2015-LampmanLect-Chetty-Transcript.pdf">Lampman Memorial Lecture</a> (chances of reaching the top fifth); Congressional Research Service, <a href="https://www.everycrsreport.com/reports/IN12737.html">“Poverty in 2025”</a> (34.5 million); Columbia Center on Poverty and Social Policy, <a href="https://povertycenter.columbia.edu/publication/2023/what-2022-child-poverty-rates-would-look-like">child poverty in 2021 and 2022</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Platform -->
   <section class="block" id="platform">
@@ -224,30 +224,21 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <span class="label">How we pay for it</span>
           <h3>Cut tax breaks for the rich</h3>
           <p>Recent tax cuts gave the biggest rewards to the people who needed them least. The wealthiest Americans saved enormous sums, while the poorest families got almost nothing. Every dollar handed out at the top is a dollar that can’t go to schools, child care, or job training.</p>
-          <div class="ask">
-            <span class="label">Our ask</span>
-            <p>Congress should scale back the tax cuts for the wealthiest 1% of Americans and put that money directly toward fighting poverty.</p>
-          </div>
+          <p class="ask"><strong>Our ask:</strong> Congress should scale back the tax cuts for the wealthiest 1% of Americans and put that money directly toward fighting poverty.</p>
         </article>
 
         <article class="plank">
           <span class="label">What we fund</span>
           <h3>Engage a new War on Poverty</h3>
           <p>America has fought poverty before, and when the country made it a priority, poverty fell. Today millions of Americans still go without the support they need to get ahead. We want a new national effort built on three things that work: early childhood education, help paying for child care, and job training for adults.</p>
-          <div class="ask">
-            <span class="label">Our ask</span>
-            <p>Fund high-quality preschool for children from low-income families, help working parents afford child care, and pay for job training programs that partner with local employers.</p>
-          </div>
+          <p class="ask"><strong>Our ask:</strong> Fund high-quality preschool for children from low-income families, help working parents afford child care, and pay for job training programs that partner with local employers.</p>
         </article>
 
         <article class="plank">
           <span class="label">What it achieves</span>
           <h3>Break the cycle</h3>
           <p>Too many children are born into poverty and never get out. They have the talent. What they lack are the chances other kids get. When a child starts school ready to learn, a parent can keep a job, and an adult can train for a better one, the whole family moves up, and the next generation starts ahead instead of behind.</p>
-          <div class="ask">
-            <span class="label">Our ask</span>
-            <p>Treat these programs as a long-term commitment. Protect their funding from year to year, and hold them accountable for results so every dollar helps families climb.</p>
-          </div>
+          <p class="ask"><strong>Our ask:</strong> Treat these programs as a long-term commitment. Protect their funding from year to year, and hold them accountable for results so every dollar helps families climb.</p>
         </article>
       </div>
     </div>
@@ -272,7 +263,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <div class="track"><div class="fill tiny"></div></div>
         </div>
         <p class="gap-note">At this scale the $150 bar is thinner than a single pixel, so we’ve drawn it at the 1-pixel minimum. If $150 were one centimeter long, $286,000 would stretch about 19 meters.</p>
-        <p class="gap-source">Source: Tax Policy Center estimates, reported by <a href="https://www.cbsnews.com/news/big-beautiful-bill-tax-cuts-by-income-group/">CBS News</a> (poorest 20%) and <a href="https://www.contrariannews.org/p/the-tax-fairness-question-dominating">Elena Patel, Tax Policy Center co-director</a> (richest 0.1%).</p>
+        <p class="source">Source: Tax Policy Center estimates, reported by <a href="https://www.cbsnews.com/news/big-beautiful-bill-tax-cuts-by-income-group/">CBS News</a> (poorest 20%) and <a href="https://www.contrariannews.org/p/the-tax-fairness-question-dominating">Elena Patel, Tax Policy Center co-director</a> (richest 0.1%).</p>
       </div>
 
     </div>
@@ -288,15 +279,11 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
       <div class="act">
         <div class="act-left">
           <p>Lawmakers count calls from constituents. Call the U.S. Capitol switchboard and ask to be connected to your representative, then to each of your two senators.</p>
-          <div>
-            <div class="phone num">(202) 224-3121</div>
-          </div>
+          <div class="phone num">(202) 224-3121</div>
         </div>
 
         <div class="script">
-          <div class="script-head">
-            <span class="label">What to say</span>
-          </div>
+          <span class="label">What to say</span>
           <blockquote>Hi, my name is ______ and I live in ______.
 
 I’m asking [Representative / Senator ______] to scale back the tax cuts for the wealthiest 1% of Americans.
