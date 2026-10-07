@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: New Deal public-works poster. One navy hero with a rising sun, then a quiet two-column platform, a to-scale gap chart, and a call script. */
+/* Layout: New Deal public-works poster. One navy hero with a rising sun, then a stacked platform, a to-scale gap chart, and a call script. */
 :root {
   --paper: #f2f4f7;
   --card: #ffffff;
@@ -105,6 +105,7 @@ p { margin: 0; max-width: 65ch; }
 .slogan em { font-style: normal; color: var(--sun); }
 .hero-lede { margin-top: 28px; font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--hero-soft); max-width: 52ch; }
 .hero-lede strong { color: var(--hero-fg); font-weight: 700; }
+.hero-lede + .hero-lede { margin-top: 16px; }
 .cta-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
 .btn {
   display: inline-block;
@@ -132,14 +133,8 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .section-head .label { color: var(--red); }
 .section-head p { color: var(--ink-soft); }
 
-/* Odds */
-.odds { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
-.odds .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.12; max-width: 22ch; min-width: 0; }
-.odds .big span { color: var(--red); }
-.odds-text { display: grid; gap: 18px; min-width: 0; }
-
 /* Platform */
-.planks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); gap: clamp(18px, 2.4vw, 28px); }
+.planks { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(18px, 2.4vw, 28px); max-width: 780px; }
 .plank { background: var(--card); border-top: 6px solid var(--ink); padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: start; min-width: 0; }
 .plank .label { color: var(--red); }
 .plank p { color: var(--ink-soft); font-size: 1rem; }
@@ -157,6 +152,8 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .fill { height: 100%; background: var(--red); }
 .fill.tiny { width: calc(100% * 150 / 286000); min-width: 1px; }
 .gap-note { font-size: 0.9rem; color: var(--ink-soft); max-width: 70ch; }
+.gap-source { font-size: 0.8rem; color: var(--ink-soft); max-width: 90ch; margin-top: -12px; }
+.gap-source a { overflow-wrap: anywhere; }
 
 
 /* Act */
@@ -168,16 +165,14 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .script-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .script blockquote { margin: 0; font-family: var(--mono); font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
 
-/* Sources + footer */
-.sources ol { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; font-size: 0.875rem; color: var(--ink-soft); max-width: 90ch; }
-.sources a { overflow-wrap: anywhere; }
+/* Footer */
 footer { background: var(--hero-bg); color: var(--hero-soft); }
 footer .wrap { padding-block: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; align-items: center; }
 footer .brand { color: var(--hero-fg); font-size: 1.1rem; }
 footer p { font-size: 0.85rem; max-width: 60ch; }
 
 @media (max-width: 760px) {
-  .odds, .act { grid-template-columns: minmax(0, 1fr); }
+  .act { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero::after { animation: none; }
@@ -194,7 +189,6 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
         Citizens for One America
       </div>
       <nav class="nav" aria-label="Sections">
-        <a href="#odds">The odds</a>
         <a href="#platform">Platform</a>
         <a href="#gap">The gap</a>
         <a href="#act">Take action</a>
@@ -203,11 +197,8 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
 
     <h1 class="slogan">Equal opportunities for equal citizens.</h1>
 
-    <p class="hero-lede">
-    </p>
-    Americans are under attack like never before. Wealth continues to concentrate among the rich, gouging the public for their own self-interest, building mansions, buying yachts, and making golf courses. The rich pay off politicians to maintain their wealth, creating an ironclad cycle where officials are willfully ignorant of this abuse of the system.<br>
-    <br>
-    We fight to break the cycle of poverty with <strong>increased opportunities for the American people</strong>. We’ll pay for it by scaling back the tax cuts for the wealthiest 1% of Americans.</p>
+    <p class="hero-lede">Americans are under attack like never before. Wealth continues to concentrate among the rich, gouging the public for their own self-interest, building mansions, buying yachts, and making golf courses. The rich pay off politicians to maintain their wealth, creating an ironclad cycle where officials are willfully ignorant of this abuse of the system.</p>
+    <p class="hero-lede">We fight to break the cycle of poverty with <strong>increased opportunities for the American people</strong>. We’ll pay for it by scaling back the tax cuts for the wealthiest 1% of Americans.</p>
 
     <div class="cta-row">
       <a class="btn" href="#platform">Read our platform</a>
@@ -218,70 +209,44 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
 <div class="bunting" aria-hidden="true"></div>
 
 <main>
-  <!-- The odds -->
-  <section class="block" id="odds">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label">The odds</span>
-        <h2>Born at the bottom, few reach the top</h2>
-      </div>
-      <div class="odds">
-        <p class="big">A child born into America’s poorest fifth of families has a <span>7.5%</span> chance of reaching the richest fifth.</p>
-        <div class="odds-text">
-          <p>That’s lower than in Canada (13.5%) or Denmark (11.7%). In 2025, <strong>34.5 million Americans</strong> lived below the official poverty line. Talent is spread evenly across every zip code. Opportunity isn’t.</p>
-          <p>Poverty responds to policy. When Congress expanded the Child Tax Credit in 2021, child poverty fell to a record-low <strong>5.2%</strong>. When the expansion expired, it more than doubled, to <strong>12.4%</strong> in 2022. Choices made in Washington decide how many kids grow up poor.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Platform -->
   <section class="block" id="platform">
     <div class="wrap">
       <div class="section-head">
         <span class="label">Our platform</span>
-        <h2>Four planks, four asks</h2>
-        <p>Each plank explains why the issue matters and names exactly what we want elected officials to do about it.</p>
+        <h2>Three planks, three asks</h2>
+        <p>Each plank explains why the issue matters and names what we want elected officials to do about it.</p>
       </div>
 
       <div class="planks">
         <article class="plank">
-          <span class="label">Paying for it</span>
-          <h3>Scale back the top 1% tax cuts</h3>
-          <p>The One Big Beautiful Bill Act, signed July 4, 2025, made the 2017 tax cuts permanent. Its benefits run steeply uphill. The nonpartisan Tax Policy Center finds the poorest fifth of households get about <strong>$150</strong> in 2026, while the richest 0.1% get about <strong>$286,000</strong>. Without the law, the top income tax rate would have returned to <strong>39.6%</strong> this year.</p>
+          <span class="label">How we pay for it</span>
+          <h3>Cut tax breaks for the rich</h3>
+          <p>Recent tax cuts gave the biggest rewards to the people who needed them least. The wealthiest Americans saved enormous sums, while the poorest families got almost nothing. Every dollar handed out at the top is a dollar that can’t go to schools, child care, or job training.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Congress should bring the top income tax rate back to 39.6% and put that money into a fund for the three programs below.</p>
+            <p>Congress should scale back the tax cuts for the wealthiest 1% of Americans and put that money directly toward fighting poverty.</p>
           </div>
         </article>
 
         <article class="plank">
-          <span class="label">Ages 0 to 5</span>
-          <h3>Start early</h3>
-          <p>The years before kindergarten shape everything after. Nobel-winning economist James Heckman found that high-quality birth-to-five programs for disadvantaged children return about <strong>13% per child, per year</strong> through better schooling, health, and earnings. Parents gain too, because they can work while their children learn.</p>
+          <span class="label">What we fund</span>
+          <h3>Engage a new War on Poverty</h3>
+          <p>America has fought poverty before, and when the country made it a priority, poverty fell. Today millions of Americans still go without the support they need to get ahead. We want a new national effort built on three things that work: early childhood education, help paying for child care, and job training for adults.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Fully fund Head Start and Early Head Start so every eligible child has a seat, and give states matching grants to offer free pre-K to 3- and 4-year-olds from low-income families.</p>
+            <p>Fund high-quality preschool for children from low-income families, help working parents afford child care, and pay for job training programs that partner with local employers.</p>
           </div>
         </article>
 
         <article class="plank">
-          <span class="label">Working parents</span>
-          <h3>Make child care affordable</h3>
-          <p>Child care cost an average of <strong>$13,184</strong> in 2025, a third of a single parent’s median income. In 38 states, a year of infant care costs more than in-state public college tuition. A parent who can’t afford care can’t take the job or the training that would lift the family out of poverty.</p>
+          <span class="label">What it achieves</span>
+          <h3>Break the cycle</h3>
+          <p>Too many children are born into poverty and never get out. They have the talent. What they lack are the chances other kids get. When a child starts school ready to learn, a parent can keep a job, and an adult can train for a better one, the whole family moves up, and the next generation starts ahead instead of behind.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Expand federal child care assistance so low- and middle-income families never pay more than 7% of their income for child care.</p>
-          </div>
-        </article>
-
-        <article class="plank">
-          <span class="label">Adults</span>
-          <h3>Train for real careers</h3>
-          <p>Job training works when it’s built around jobs employers need to fill. Randomized trials of sector-based training programs found lasting, double-digit earnings gains. Texas has the proof: San Antonio’s Project QUEST raised participants’ earnings by <strong>15 to 20%</strong>, about $6,000 a year, nine to fourteen years after they enrolled.</p>
-          <div class="ask">
-            <span class="label">Our ask</span>
-            <p>Increase federal funding for job training programs run with community colleges and local employers, and help trainees with costs like transportation and child care so they can finish.</p>
+            <p>Treat these programs as a long-term commitment. Protect their funding from year to year, and hold them accountable for results so every dollar helps families climb.</p>
           </div>
         </article>
       </div>
@@ -307,6 +272,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <div class="track"><div class="fill tiny"></div></div>
         </div>
         <p class="gap-note">At this scale the $150 bar is thinner than a single pixel, so we’ve drawn it at the 1-pixel minimum. If $150 were one centimeter long, $286,000 would stretch about 19 meters.</p>
+        <p class="gap-source">Source: Tax Policy Center estimates, reported by <a href="https://www.cbsnews.com/news/big-beautiful-bill-tax-cuts-by-income-group/">CBS News</a> (poorest 20%) and <a href="https://www.contrariannews.org/p/the-tax-fairness-question-dominating">Elena Patel, Tax Policy Center co-director</a> (richest 0.1%).</p>
       </div>
 
     </div>
@@ -333,7 +299,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           </div>
           <blockquote>Hi, my name is ______ and I live in ______.
 
-I’m asking [Representative / Senator ______] to scale back the tax cuts for the top 1% by restoring the 39.6% top tax rate.
+I’m asking [Representative / Senator ______] to scale back the tax cuts for the wealthiest 1% of Americans.
 
 Please use that money to fund Head Start, child care assistance, and job training.
 
@@ -343,25 +309,6 @@ Where a child starts shouldn’t decide where they finish. Thank you.</blockquot
     </div>
   </section>
 
-  <!-- Sources -->
-  <section class="block sources" id="sources">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label">Sources</span>
-        <h2>Check our numbers</h2>
-      </div>
-      <ol>
-        <li>Congressional Research Service, <a href="https://www.everycrsreport.com/reports/IN12737.html">“Poverty in 2025”</a> (Sept. 16, 2026), summarizing U.S. Census Bureau data: 34.5 million people in poverty.</li>
-        <li>Raj Chetty, <a href="https://www.irp.wisc.edu/wp/wp-content/uploads/2020/06/2015-LampmanLect-Chetty-Transcript.pdf">Lampman Memorial Lecture</a> (2015): 7.5% bottom-to-top-fifth mobility in the U.S., vs. 13.5% Canada and 11.7% Denmark.</li>
-        <li>Columbia Center on Poverty and Social Policy, <a href="https://povertycenter.columbia.edu/publication/2023/what-2022-child-poverty-rates-would-look-like">child poverty after the expanded Child Tax Credit</a>: 5.2% in 2021, 12.4% in 2022 (Supplemental Poverty Measure).</li>
-        <li>Tax Policy Center estimates via <a href="https://www.cbsnews.com/news/big-beautiful-bill-tax-cuts-by-income-group/">CBS News</a> (bottom fifth, about $150) and <a href="https://www.contrariannews.org/p/the-tax-fairness-question-dominating">Elena Patel, TPC co-director</a> (top 0.1%, about $286,000).</li>
-        <li>Fiscal Policy Institute, <a href="https://fiscalpolicy.org/?p=17038">OBBBA and top earners</a>: top rate would have been 39.6% in 2026.</li>
-        <li>University of Chicago News, <a href="https://news.uchicago.edu/story/investment-early-childhood-programs-yields-robust-returns">“Investment in early childhood programs yields robust returns”</a>: Heckman et al., 13% annual return per child.</li>
-        <li>Child Care Aware of America, <a href="https://info.childcareaware.org/price-and-supply-2025">Child Care in America: 2025 Price &amp; Supply</a>: $13,184 average; 33% of single-parent median income. Infant care vs. tuition in 38 states via <a href="https://moneywise.com/news/top-stories/oklahoma-childcare-costs-subsidies-daycare-crisis">Moneywise</a>.</li>
-        <li>Katz, Roth, Hendra and Schaberg, <a href="https://www.nber.org/system/files/working_papers/w28248/w28248.pdf">“Why Do Sectoral Employment Programs Work?”</a> (NBER), and <a href="https://evidencebasedprograms.org/?p=474">Social Programs That Work: Project QUEST</a>.</li>
-      </ol>
-    </div>
-  </section>
 </main>
 
 <footer>
