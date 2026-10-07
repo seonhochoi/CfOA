@@ -20,7 +20,6 @@
   --sun: #f2b134;
   --wash: #fbefcf;
   --hero-bg: #14213d;
-  --hero-ray: #1c2c50;
   --hero-fg: #f7f8fa;
   --hero-soft: #c6cfe0;
 
@@ -32,14 +31,14 @@
   :root:not([data-theme="light"]) {
     --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
     --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
-    --hero-bg: #0a1024; --hero-ray: #111a36; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
+    --hero-bg: #0a1024; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
   --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
-  --hero-bg: #0a1024; --hero-ray: #111a36; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
+  --hero-bg: #0a1024; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
   color-scheme: dark;
 }
 
@@ -71,9 +70,7 @@ p { margin: 0; max-width: 65ch; }
   position: relative;
   overflow: hidden;
   color: var(--hero-fg);
-  background:
-    repeating-conic-gradient(from -90deg at 84% 100%, var(--hero-ray) 0deg 4.5deg, transparent 4.5deg 9deg),
-    var(--hero-bg);
+  background: var(--hero-bg);
 }
 .hero::after {
   content: "";
