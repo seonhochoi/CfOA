@@ -19,7 +19,6 @@
   --red: #b92b2b;
   --sun: #f2b134;
   --wash: #fbefcf;
-  --dot: #c3ccd9;
   --hero-bg: #14213d;
   --hero-ray: #1c2c50;
   --hero-fg: #f7f8fa;
@@ -32,14 +31,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
-    --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c; --dot: #334270;
+    --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
     --hero-bg: #0a1024; --hero-ray: #111a36; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #0e152b; --card: #151f3b; --ink: #edf0f6; --ink-soft: #aeb9cf; --rule: #2a3860;
-  --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c; --dot: #334270;
+  --red: #f07264; --sun: #f5c04f; --wash: #2b2a2c;
   --hero-bg: #0a1024; --hero-ray: #111a36; --hero-fg: #f7f8fa; --hero-soft: #b9c3d8;
   color-scheme: dark;
 }
@@ -137,17 +136,10 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .section-head p { color: var(--ink-soft); }
 
 /* Odds */
-.odds { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.odds { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.odds .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.12; max-width: 22ch; min-width: 0; }
+.odds .big span { color: var(--red); }
 .odds-text { display: grid; gap: 18px; min-width: 0; }
-.odds-text .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.15; max-width: 30ch; }
-.odds-text .big span { color: var(--red); }
-.dots-fig { margin: 0; min-width: 0; }
-.dots { display: grid; grid-template-columns: repeat(8, 1fr); gap: clamp(8px, 1.6vw, 14px); max-width: 420px; }
-.dots i { display: block; aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--dot); }
-.dots i.up { background: var(--sun); box-shadow: 0 0 0 2px var(--ink); }
-.dots-fig figcaption { margin-top: 16px; font-size: 0.875rem; color: var(--ink-soft); max-width: 44ch; display: grid; gap: 6px; }
-.key { display: inline-flex; align-items: center; gap: 8px; }
-.key i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex: none; }
 
 /* Platform */
 .planks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); gap: clamp(18px, 2.4vw, 28px); }
@@ -169,17 +161,6 @@ section.block + section.block { border-top: 1px solid var(--rule); }
 .fill.tiny { width: calc(100% * 150 / 286000); min-width: 1px; }
 .gap-note { font-size: 0.9rem; color: var(--ink-soft); max-width: 70ch; }
 
-.scaler { margin-top: clamp(40px, 6vw, 64px); background: var(--card); padding: clamp(22px, 3vw, 34px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 48px); align-items: center; }
-.scaler h3 { margin-bottom: 10px; }
-.scaler p { color: var(--ink-soft); font-size: 1rem; }
-.slider-label { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; }
-input[type="range"] { width: 100%; margin-top: 10px; accent-color: var(--red); height: 28px; }
-.result { display: grid; gap: 4px; }
-.result .money { font-family: var(--display); font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 900; line-height: 1; }
-.result .kids { font-family: var(--display); font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 900; line-height: 1; color: var(--red); }
-.result small { font-size: 0.95rem; color: var(--ink-soft); }
-.result .sep { height: 1px; background: var(--rule); margin-block: 14px; }
-.fine { font-size: 0.8rem; color: var(--ink-soft); margin-top: 16px; }
 
 /* Act */
 .act { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
@@ -189,8 +170,6 @@ input[type="range"] { width: 100%; margin-top: 10px; accent-color: var(--red); h
 .script { background: var(--card); border: 2px solid var(--ink); padding: clamp(20px, 3vw, 28px); display: grid; gap: 16px; min-width: 0; }
 .script-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .script blockquote { margin: 0; font-family: var(--mono); font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
-.copy { font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; background: var(--ink); color: var(--paper); border: 0; padding: 9px 14px; cursor: pointer; }
-.const { font-size: 0.95rem; color: var(--ink-soft); border-left: 3px solid var(--sun); padding-left: 14px; }
 
 /* Sources + footer */
 .sources ol { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; font-size: 0.875rem; color: var(--ink-soft); max-width: 90ch; }
@@ -201,7 +180,7 @@ footer .brand { color: var(--hero-fg); font-size: 1.1rem; }
 footer p { font-size: 0.85rem; max-width: 60ch; }
 
 @media (max-width: 760px) {
-  .odds, .scaler, .act { grid-template-columns: minmax(0, 1fr); }
+  .odds, .act { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero::after { animation: none; }
@@ -246,18 +225,11 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
         <h2>Born at the bottom, few reach the top</h2>
       </div>
       <div class="odds">
+        <p class="big">A child born into America’s poorest fifth of families has a <span>7.5%</span> chance of reaching the richest fifth.</p>
         <div class="odds-text">
-          <p class="big">Of every 40 children born into America’s poorest fifth of families, about <span>3</span> grow up to reach the richest fifth.</p>
-          <p>That’s 7.5%, lower than in Canada (13.5%) or Denmark (11.7%). In 2025, <strong>34.5 million Americans</strong> lived below the official poverty line. Talent is spread evenly across every zip code. Opportunity isn’t.</p>
+          <p>That’s lower than in Canada (13.5%) or Denmark (11.7%). In 2025, <strong>34.5 million Americans</strong> lived below the official poverty line. Talent is spread evenly across every zip code. Opportunity isn’t.</p>
           <p>Poverty responds to policy. When Congress expanded the Child Tax Credit in 2021, child poverty fell to a record-low <strong>5.2%</strong>. When the expansion expired, it more than doubled, to <strong>12.4%</strong> in 2022. Choices made in Washington decide how many kids grow up poor.</p>
         </div>
-        <figure class="dots-fig">
-          <div class="dots" id="dots" role="img" aria-label="40 dots representing children born into the bottom fifth; 3 are highlighted as reaching the top fifth."></div>
-          <figcaption>
-            <span class="key"><i style="background: var(--dot)"></i> Child born into the bottom fifth of incomes</span>
-            <span class="key"><i style="background: var(--sun); box-shadow: 0 0 0 2px var(--ink)"></i> Reaches the top fifth as an adult (3 of 40 = 7.5%)</span>
-          </figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -278,7 +250,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <p>The One Big Beautiful Bill Act, signed July 4, 2025, made the 2017 tax cuts permanent. Its benefits run steeply uphill. The nonpartisan Tax Policy Center finds the poorest fifth of households get about <strong>$150</strong> in 2026, while the richest 0.1% get about <strong>$286,000</strong>. Without the law, the top income tax rate would have returned to <strong>39.6%</strong> this year.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Congress should restore the 39.6% rate on the top bracket (taxable income above $640,600 for single filers, $768,700 for married couples) and put that revenue in a dedicated Opportunity Fund for the three programs below.</p>
+            <p>Congress should bring the top income tax rate back to 39.6% and put that money into a fund for the three programs below.</p>
           </div>
         </article>
 
@@ -298,7 +270,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <p>Child care cost an average of <strong>$13,184</strong> in 2025, a third of a single parent’s median income. In 38 states, a year of infant care costs more than in-state public college tuition. A parent who can’t afford care can’t take the job or the training that would lift the family out of poverty.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Expand the Child Care and Development Block Grant (CCDBG) so no family earning less than its state’s median income pays more than 7% of its income for child care.</p>
+            <p>Expand federal child care assistance so low- and middle-income families never pay more than 7% of their income for child care.</p>
           </div>
         </article>
 
@@ -308,7 +280,7 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
           <p>Job training works when it’s built around jobs employers need to fill. Randomized trials of sector-based training programs found lasting, double-digit earnings gains. Texas has the proof: San Antonio’s Project QUEST raised participants’ earnings by <strong>15 to 20%</strong>, about $6,000 a year, nine to fourteen years after they enrolled.</p>
           <div class="ask">
             <span class="label">Our ask</span>
-            <p>Increase Workforce Innovation and Opportunity Act (WIOA) funding for sector-based training run with community colleges and local employers, and cover the supports that keep people enrolled: stipends, transportation, and child care.</p>
+            <p>Increase federal funding for job training programs run with community colleges and local employers, and help trainees with costs like transportation and child care so they can finish.</p>
           </div>
         </article>
       </div>
@@ -336,25 +308,6 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
         <p class="gap-note">At this scale the $150 bar is thinner than a single pixel, so we’ve drawn it at the 1-pixel minimum. If $150 were one centimeter long, $286,000 would stretch about 19 meters.</p>
       </div>
 
-      <div class="scaler">
-        <div>
-          <h3>Scale it back</h3>
-          <p>We aren’t asking to take away every dollar. Choose how much of the average top-1% tax cut to redirect, and see what one household’s share would buy.</p>
-          <div class="slider-label">
-            <label class="label" for="scale">Share redirected</label>
-            <span class="label num" id="pct-out">50%</span>
-          </div>
-          <input type="range" id="scale" min="0" max="100" step="5" value="50" aria-describedby="pct-out">
-        </div>
-        <div class="result" aria-live="polite">
-          <span class="money num" id="money-out">$33,000</span>
-          <small>redirected from one top-1% household’s yearly tax cut</small>
-          <div class="sep"></div>
-          <span class="kids num" id="kids-out">2.5</span>
-          <small>children covered by a full year of child care</small>
-        </div>
-      </div>
-      <p class="fine">Uses ITEP’s estimate of an average $66,000 tax cut for the top 1% in 2026 (other models estimate less) and Child Care Aware of America’s 2025 average child care price of $13,184.</p>
     </div>
   </section>
 
@@ -372,19 +325,17 @@ footer p { font-size: 0.85rem; max-width: 60ch; }
             <div class="phone num">(202) 224-3121</div>
             <p class="phone-cap">U.S. Capitol switchboard</p>
           </div>
-          <p class="const">Start with the House. Under Article I, Section 7 of the Constitution, all bills for raising revenue must begin there, so the House Ways and Means Committee moves first on taxes.</p>
         </div>
 
         <div class="script">
           <div class="script-head">
             <span class="label">What to say</span>
-            <button class="copy" id="copy-btn" type="button">Copy script</button>
           </div>
-          <blockquote id="script-text">Hi, my name is ______ and I live in ______.
+          <blockquote>Hi, my name is ______ and I live in ______.
 
 I’m asking [Representative / Senator ______] to scale back the tax cuts for the top 1% by restoring the 39.6% top tax rate.
 
-Please use that money to fund Head Start, child care assistance through the Child Care and Development Block Grant, and job training through WIOA.
+Please use that money to fund Head Start, child care assistance, and job training.
 
 Where a child starts shouldn’t decide where they finish. Thank you.</blockquote>
         </div>
@@ -404,8 +355,7 @@ Where a child starts shouldn’t decide where they finish. Thank you.</blockquot
         <li>Raj Chetty, <a href="https://www.irp.wisc.edu/wp/wp-content/uploads/2020/06/2015-LampmanLect-Chetty-Transcript.pdf">Lampman Memorial Lecture</a> (2015): 7.5% bottom-to-top-fifth mobility in the U.S., vs. 13.5% Canada and 11.7% Denmark.</li>
         <li>Columbia Center on Poverty and Social Policy, <a href="https://povertycenter.columbia.edu/publication/2023/what-2022-child-poverty-rates-would-look-like">child poverty after the expanded Child Tax Credit</a>: 5.2% in 2021, 12.4% in 2022 (Supplemental Poverty Measure).</li>
         <li>Tax Policy Center estimates via <a href="https://www.cbsnews.com/news/big-beautiful-bill-tax-cuts-by-income-group/">CBS News</a> (bottom fifth, about $150) and <a href="https://www.contrariannews.org/p/the-tax-fairness-question-dominating">Elena Patel, TPC co-director</a> (top 0.1%, about $286,000).</li>
-        <li>Fiscal Policy Institute, <a href="https://fiscalpolicy.org/?p=17038">OBBBA and top earners</a>: top rate would have been 39.6% in 2026; current top-bracket thresholds.</li>
-        <li>Institute on Taxation and Economic Policy estimate (top 1% average cut of about $66,000 in 2026), via <a href="https://www.nbclosangeles.com/news/business/money-report/trump-big-beautiful-bill-gives-top-1-biggest-tax-cuts-in-these-states/3738084/">NBC / CNBC</a>.</li>
+        <li>Fiscal Policy Institute, <a href="https://fiscalpolicy.org/?p=17038">OBBBA and top earners</a>: top rate would have been 39.6% in 2026.</li>
         <li>University of Chicago News, <a href="https://news.uchicago.edu/story/investment-early-childhood-programs-yields-robust-returns">“Investment in early childhood programs yields robust returns”</a>: Heckman et al., 13% annual return per child.</li>
         <li>Child Care Aware of America, <a href="https://info.childcareaware.org/price-and-supply-2025">Child Care in America: 2025 Price &amp; Supply</a>: $13,184 average; 33% of single-parent median income. Infant care vs. tuition in 38 states via <a href="https://moneywise.com/news/top-stories/oklahoma-childcare-costs-subsidies-daycare-crisis">Moneywise</a>.</li>
         <li>Katz, Roth, Hendra and Schaberg, <a href="https://www.nber.org/system/files/working_papers/w28248/w28248.pdf">“Why Do Sectoral Employment Programs Work?”</a> (NBER), and <a href="https://evidencebasedprograms.org/?p=474">Social Programs That Work: Project QUEST</a>.</li>
@@ -423,55 +373,5 @@ Where a child starts shouldn’t decide where they finish. Thank you.</blockquot
     <p>Citizens for One America is a fictional interest group created for an AP Government and Politics class project.</p>
   </div>
 </footer>
-
-<script>
-(function () {
-  // 40 children; 3 reach the top fifth (7.5%). Scattered positions.
-  var up = { 5: 1, 18: 1, 33: 1 };
-  var dots = document.getElementById("dots");
-  for (var i = 0; i < 40; i++) {
-    var d = document.createElement("i");
-    if (up[i]) d.className = "up";
-    dots.appendChild(d);
-  }
-
-  // Scale-it-back slider
-  var AVG_TOP1_CUT = 66000;   // ITEP, 2026
-  var CHILD_CARE = 13184;     // Child Care Aware of America, 2025
-  var range = document.getElementById("scale");
-  var pctOut = document.getElementById("pct-out");
-  var moneyOut = document.getElementById("money-out");
-  var kidsOut = document.getElementById("kids-out");
-  function update() {
-    var p = Number(range.value);
-    var dollars = AVG_TOP1_CUT * p / 100;
-    pctOut.textContent = p + "%";
-    moneyOut.textContent = "$" + Math.round(dollars).toLocaleString("en-US");
-    kidsOut.textContent = (dollars / CHILD_CARE).toFixed(1);
-  }
-  range.addEventListener("input", update);
-  update();
-
-  // Copy script
-  var btn = document.getElementById("copy-btn");
-  var text = document.getElementById("script-text");
-  function selectText() {
-    var r = document.createRange();
-    r.selectNodeContents(text);
-    var s = window.getSelection();
-    s.removeAllRanges();
-    s.addRange(r);
-  }
-  btn.addEventListener("click", function () {
-    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy script"; }, 1800); };
-    try {
-      navigator.clipboard.writeText(text.textContent).then(done, function () { selectText(); btn.textContent = "Press Ctrl+C"; });
-    } catch (e) {
-      selectText();
-      btn.textContent = "Press Ctrl+C";
-    }
-  });
-})();
-</script>
 </body>
 </html>
